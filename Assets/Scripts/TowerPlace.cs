@@ -5,7 +5,12 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class TowerPlace : MonoBehaviour,
-    IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler, IPointerMoveHandler
+    IPointerClickHandler, 
+    IPointerEnterHandler, 
+    IPointerExitHandler, 
+    IPointerUpHandler, 
+    IPointerDownHandler, 
+    IPointerMoveHandler
 {
     [SerializeField] Renderer render;
     [SerializeField] Color curColor;
