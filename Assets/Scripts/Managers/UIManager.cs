@@ -7,7 +7,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] EventSystem eventSystemPrefab;
 
-    private Stack<PopUpUI> popUpStack;
+
+    private Stack<PopUpUI> popUpStack = new Stack<PopUpUI>();
 
     private void Awake()
     {
@@ -17,36 +18,36 @@ public class UIManager : MonoBehaviour
     public void EnsureEventSystem()
     {
         EventSystem eventSystem = FindObjectOfType<EventSystem>();
-        if(eventSystem == null)
+        if (eventSystem == null)
         {
             Instantiate(eventSystemPrefab);
         }
     }
 
+    // 일반화 이유
+    // 일시정지 팝업, 경고 팝업, 아이디 생성 팝업 등 여러가지 팝업 가능
     public T ShowPopUpUI<T>(T popUpUI) where T : PopUpUI
     {
-        if(popUpStack.Count > 0)
+        if (popUpStack.Count > 0)
         {
-            PopUpUI prevUI = popUpStack.Peek();
+            PopUpUI prevUI = popUpStack.Peek(); // 스택 맨위에 있는 게, 열려있는 팝업
             prevUI.gameObject.SetActive(false);
         }
-
         T instance = Instantiate(popUpUI);
-        popUpStack.Push(popUpUI);
-        Time.timeScale = 0f;
+        popUpStack.Push(instance);
+        Time.timeScale = 0;
 
-        return popUpUI;
+        return instance;
     }
-
     public void ClosePopUpUI()
     {
-        PopUpUI curUI = popUpStack.Pop();
+        PopUpUI curUI = popUpStack.Pop(); // 최상단의 팝업 꺼내기
         Destroy(curUI.gameObject);
 
-        if(popUpStack.Count > 0)
+        if (popUpStack.Count > 0)
         {
             PopUpUI prevUI = popUpStack.Peek();
-            prevUI.gameObject.SetActive(false);
+            prevUI.gameObject.SetActive(true);
         }
         else
         {

@@ -4,47 +4,50 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class TowerPlace : MonoBehaviour,
-    IPointerClickHandler, 
-    IPointerEnterHandler, 
-    IPointerExitHandler, 
-    IPointerUpHandler, 
-    IPointerDownHandler, 
-    IPointerMoveHandler
+public class TowerPlace : MonoBehaviour
+    , IPointerClickHandler
+    , IPointerEnterHandler
+    , IPointerExitHandler
+    , IPointerUpHandler
+    , IPointerDownHandler
+    , IPointerMoveHandler
 {
+
+    // public UnityEvent OnPointerEntered;
+    // public UnityEvent OnPointerExited;
     [SerializeField] Renderer render;
-    [SerializeField] Color curColor;
+    [SerializeField] Color normalColor;
     [SerializeField] Color highlightColor;
+
+    [SerializeField] InGameUI buildUI;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // 클릭시 반응                
-    }
+        // Debug.Log("Click");
 
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // 마우스 포인터가 들어오면 반응
+        Debug.Log("Enter");
+        // OnPointerEntered?.Invoke();
         render.material.color = highlightColor;
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
-        // 마우스 포인터가 나가면 반응
-        render.material.color = curColor;
+        Debug.Log("Exit");
+        // OnPointerExited?.Invoke();
+        render.material.color = normalColor;
     }
-
     public void OnPointerUp(PointerEventData eventData)
     {
-        // 마우스 포인터를 떼면 반응
+        Debug.Log("Up");
     }
-
     public void OnPointerDown(PointerEventData eventData)
     {
-        // 마우스 포인터를 누르면 반응
+        Debug.Log("Down");
     }
-
     public void OnPointerMove(PointerEventData eventData)
     {
-        // 마우스 포인터를 움직이면 반응
+        // Debug.Log("Move");
     }
 }

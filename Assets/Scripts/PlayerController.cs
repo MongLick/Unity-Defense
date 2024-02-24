@@ -7,14 +7,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Transform startPoint;
     [SerializeField] Transform endPoint;
 
-    private void Start()
-    {
-        transform.position = startPoint.position;
-        agent.destination = endPoint.position;
-    }
+    /*private void Start()
+	{
+		agent.destination = endPoint.position;	
+	}*/
 
     private void MoveTo(Vector3 point)
     {
@@ -24,8 +22,11 @@ public class PlayerController : MonoBehaviour
     private void OnRightClick(InputValue value)
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit hitInfo))
+        // Debug.Log(Input.mousePosition);
+        // Debug.DrawLine(ray.origin, ray.direction * 100, Color.yellow);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
+            // Debug.Log("Hit");
             Debug.DrawLine(Camera.main.transform.position, hitInfo.point, Color.red, 0.2f);
             MoveTo(hitInfo.point);
         }
