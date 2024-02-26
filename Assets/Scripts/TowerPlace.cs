@@ -10,6 +10,9 @@ public class TowerPlace : MonoBehaviour,
     IPointerEnterHandler,
     IPointerExitHandler
 {
+
+    // public UnityEvent OnPointerEntered;
+    // public UnityEvent OnPointerExited;
     [SerializeField] Renderer render;
     [SerializeField] Color normalColor;
     [SerializeField] Color highlightColor;
@@ -39,7 +42,6 @@ public class TowerPlace : MonoBehaviour,
         render.material.color = highlightColor;
 
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
         // Debug.Log("Exit");

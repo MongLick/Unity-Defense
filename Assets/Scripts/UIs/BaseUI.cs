@@ -15,6 +15,7 @@ public class BaseUI : MonoBehaviour
 
     protected virtual void Awake()
     {
+        // Debug.Log("Binding");
         Bind();
     }
 
