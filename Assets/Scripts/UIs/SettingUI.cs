@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseUI : PopUpUI
+public class SettingUI : PopUpUI
 {
-    [SerializeField] SettingUI settingUIprefab;
-
+    [SerializeField] ShutCutUI shutCutUIPrefab;
     protected override void Awake()
     {
         base.Awake();
 
-        buttons["SettingButton"].onClick.AddListener(Setting);
+        buttons["ShotCutButton"].onClick.AddListener(ShowCut);
         buttons["CloseButton"].onClick.AddListener(Close);
     }
-    public void Setting()
-    {
-        Manager.UI.ShowPopUpUI(settingUIprefab);
-    }
 
+    public void ShowCut()
+    {
+        Manager.UI.ShowPopUpUI(shutCutUIPrefab);
+    }
 }

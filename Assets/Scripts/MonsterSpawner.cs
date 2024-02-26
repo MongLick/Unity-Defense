@@ -4,35 +4,30 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    [SerializeField] Monster monsterPrefab;
-    [SerializeField] float repeatTime;
     [SerializeField] Transform startPoint;
     [SerializeField] Transform endPoint;
-
-
-    Coroutine routine;
+    [SerializeField] Monster monsterPrefab;
+    [SerializeField] float repeatTime;
+    [SerializeField] int count;
 
     private void OnEnable()
     {
-        // 스폰 진행
-        routine = StartCoroutine(SpawnRoutine());
+        spawnerRoutine = StartCoroutine(SpawnerRoutine());
     }
-
     private void OnDisable()
     {
-        // 스폰 막기
-        StopCoroutine(routine);
+        StopCoroutine(spawnerRoutine);
     }
 
-    IEnumerator SpawnRoutine()
+    Coroutine spawnerRoutine;
+    IEnumerator SpawnerRoutine()
     {
-        while (true)
+        while (count > 0)
         {
-            // 초 기다렸다
+            count--;
             yield return new WaitForSeconds(repeatTime);
-            // 몬스터 하나 스폰
-            Monster monster = Instantiate(monsterPrefab, startPoint.position, Quaternion.identity);
-            monster.MoveTo(endPoint.position);
+            Monster monster = Instantiate(monsterPrefab, startPoint.position, startPoint.rotation);
+            monster.SetDestination(endPoint);
         }
     }
 }

@@ -3,48 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class TowerPlace : MonoBehaviour,
-    IPointerClickHandler, 
-    IPointerEnterHandler, 
-    IPointerExitHandler, 
-    IPointerUpHandler, 
-    IPointerDownHandler, 
-    IPointerMoveHandler
+    IPointerClickHandler,
+    IPointerEnterHandler,
+    IPointerExitHandler
 {
     [SerializeField] Renderer render;
-    [SerializeField] Color curColor;
+    [SerializeField] Color normalColor;
     [SerializeField] Color highlightColor;
+    // [SerializeField] GameObject tower;
+
+    [SerializeField] BuildUI buildUI;
+
+    [Header("Tower")]
+    [SerializeField] TowerData archorTower;
+    [SerializeField] TowerData canonTower;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // 클릭시 반응                
+        // Debug.Log("Click");
+        // gameObject.isStatic = false;
+        // Instantiate(tower, transform.position, transform.rotation);
+        BuildUI ui = Manager.UI.ShowInGameUI(buildUI);
+        ui.SetTarget(transform);
+        ui.SetTowerPlace(this);
+
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // 마우스 포인터가 들어오면 반응
+        // Debug.Log("Enter");
         render.material.color = highlightColor;
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        // 마우스 포인터가 나가면 반응
-        render.material.color = curColor;
+        // Debug.Log("Exit");
+        render.material.color = normalColor;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void BuildTower(string name)
     {
-        // 마우스 포인터를 떼면 반응
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        // 마우스 포인터를 누르면 반응
-    }
-
-    public void OnPointerMove(PointerEventData eventData)
-    {
-        // 마우스 포인터를 움직이면 반응
+        if (name == "Archor")
+        {
+            gameObject.SetActive(false);
+            Tower tower = Instantiate(archorTower.prefab, transform.position, transform.rotation);
+            tower.SetTowerPlace(this);
+        }
+        else if (name == "Cannon")
+        {
+            gameObject.SetActive(false);
+            Tower tower = Instantiate(canonTower.prefab, transform.position, transform.rotation);
+            tower.SetTowerPlace(this);
+        }
     }
 }
