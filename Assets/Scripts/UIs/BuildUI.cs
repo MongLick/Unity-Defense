@@ -6,10 +6,10 @@ public class BuildUI : InGameUI
     protected override void Awake()
     {
         base.Awake();
-        /*buttons["ArchorButton"].onClick.AddListener(() => BuildTower("Archor"));
+        buttons["ArchorButton"].onClick.AddListener(() => BuildTower("Archor"));
         buttons["CannonButton"].onClick.AddListener(BuildCannonTower);
-        buttons["MageButtont"].onClick.AddListener(BuildMageTower);
-        buttons["BarrackButton"].onClick.AddListener(BuildBarrackTower);*/
+        buttons["MageButton"].onClick.AddListener(BuildMageTower);
+        buttons["BarrackButton"].onClick.AddListener(BuildBarrackTower);
 
     }
 
