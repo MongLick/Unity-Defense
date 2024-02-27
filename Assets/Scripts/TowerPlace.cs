@@ -10,9 +10,6 @@ public class TowerPlace : MonoBehaviour,
     IPointerEnterHandler,
     IPointerExitHandler
 {
-
-    // public UnityEvent OnPointerEntered;
-    // public UnityEvent OnPointerExited;
     [SerializeField] Renderer render;
     [SerializeField] Color normalColor;
     [SerializeField] Color highlightColor;

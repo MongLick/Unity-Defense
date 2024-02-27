@@ -36,13 +36,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // 일반화 이유
-    // 일시정지 팝업, 경고 팝업, 아이디 생성 팝업 등 여러가지 팝업 가능
     public T ShowPopUpUI<T>(T popUpUI) where T : PopUpUI
     {
         if (popUpStack.Count > 0)
         {
-            PopUpUI prevUI = popUpStack.Peek(); // 스택 맨위에 있는 게, 열려있는 팝업
+            PopUpUI prevUI = popUpStack.Peek();
             prevUI.gameObject.SetActive(false);
         }
 
@@ -53,9 +51,10 @@ public class UIManager : MonoBehaviour
 
         return instance;
     }
+
     public void ClosePopUpUI()
     {
-        PopUpUI curUI = popUpStack.Pop(); // 최상단의 팝업 꺼내기
+        PopUpUI curUI = popUpStack.Pop();
         Destroy(curUI.gameObject);
 
         if (popUpStack.Count > 0)

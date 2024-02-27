@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseUI : PopUpUI
 {
-    [SerializeField] SettingUI settingUIprefab;
+    [SerializeField] SettingUI SettingUIPrefab;
 
     protected override void Awake()
     {
@@ -15,7 +16,7 @@ public class PauseUI : PopUpUI
     }
     public void Setting()
     {
-        Manager.UI.ShowPopUpUI(settingUIprefab);
+        Manager.UI.ShowPopUpUI(SettingUIPrefab);
     }
 
 }

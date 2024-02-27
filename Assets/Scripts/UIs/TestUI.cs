@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class TestUI : BaseUI
 {
-    protected override void Awake()
+    /*protected override void Awake()
     {
         base.Awake();
 
-        /*texts["Tltle"].text = "Title";
+        *//*texts["Tltle"].text = "Title";
         buttons["NextButton"].onClick.AddListener(Jump);*/
-        GetUI<TextMeshProUGUI>("Title").text = "Title";
+        /*GetUI<TextMeshProUGUI>("Title").text = "Title";
         GetUI<Button>("NextButton").interactable = false;
         GetUI<Image>("PlayerImage").color = Color.red;
-    }
+    }*/
     /*public void Jump()
     {
         Debug.Log("Jump");

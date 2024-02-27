@@ -6,14 +6,14 @@ public class BuildUI : InGameUI
     protected override void Awake()
     {
         base.Awake();
-        // 람다식 표현
-        buttons["ArchorButton"].onClick.AddListener(() => BuildTower("Archor"));
+        /*buttons["ArchorButton"].onClick.AddListener(() => BuildTower("Archor"));
         buttons["CannonButton"].onClick.AddListener(BuildCannonTower);
         buttons["MageButtont"].onClick.AddListener(BuildMageTower);
-        buttons["BarrackButton"].onClick.AddListener(BuildBarrackTower);
+        buttons["BarrackButton"].onClick.AddListener(BuildBarrackTower);*/
 
     }
-    // 람다식이 아닐때
+
+
     public void BuildCannonTower()
     {
         towerPlace.BuildTower("Cannon");
@@ -27,7 +27,7 @@ public class BuildUI : InGameUI
     }
     public void BuildBarrackTower()
     {
-        towerPlace.BuildTower("Barrack");
+        towerPlace.BuildTower("Barracks");
         CloseUI();
     }
 

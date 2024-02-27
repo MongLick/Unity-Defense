@@ -22,9 +22,8 @@ public class MonsterSpawner : MonoBehaviour
     Coroutine spawnerRoutine;
     IEnumerator SpawnerRoutine()
     {
-        while (count > 0)
+        while (true)
         {
-            count--;
             yield return new WaitForSeconds(repeatTime);
             Monster monster = Instantiate(monsterPrefab, startPoint.position, startPoint.rotation);
             monster.SetDestination(endPoint);

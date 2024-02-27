@@ -10,7 +10,7 @@ public class BaseUI : MonoBehaviour
     protected Dictionary<string, Button> buttons;
     protected Dictionary<string, TMP_Text> texts;
 
-    protected Dictionary<string, Component> components;
+    //protected Dictionary<string, Component> components;
 
 
     protected virtual void Awake()
@@ -21,7 +21,7 @@ public class BaseUI : MonoBehaviour
 
     private void Bind()
     {
-        /*transforms = new Dictionary<string, RectTransform>();
+        transforms = new Dictionary<string, RectTransform>();
         buttons = new Dictionary<string, Button>();
         texts = new Dictionary<string, TMP_Text>();
 
@@ -44,19 +44,19 @@ public class BaseUI : MonoBehaviour
             {
                 texts.Add(name, text);
             }
-        }*/
+        }
 
-        components = new Dictionary<string, Component>();
+        /*components = new Dictionary<string, Component>();
         Component[] children2 = GetComponentsInChildren<Component>();
         foreach (Component child in children2)
         {
             string name = $"{child.gameObject.name}_{child.GetType().Name}";
             components.Add(name, child);
-        }
+        }*/
     }
 
-    public T GetUI<T>(string name) where T : Component
+    /*public T GetUI<T>(string name) where T : Component
     {
         return components[$"{name}_{typeof(T).Name}"] as T;
-    }
+    }*/
 }
